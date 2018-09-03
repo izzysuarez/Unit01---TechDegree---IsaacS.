@@ -1,6 +1,6 @@
 // FSJS - Random Quote Generator
 
-// Create the array of quote objects and name it quotes
+// Create the array of quote objects with quote, source, citation, year and tags
 
 
 var quotes = [
@@ -36,6 +36,7 @@ var quotes = [
   }
 ];
 
+//creat combos of foreground and bacground color objects, then use a a random function to get a different combo each time
 var colorPlate = [
   {
     background: '#2C3E50',
@@ -60,6 +61,7 @@ var colorPlate = [
 
 ];
 
+//need global variables - randommQuoteindex, randomeColorindex, htmlstring, and interval id (for stop and set timer)
 var randomQuoteindx;
 var randomColorindx;
 var HTMLString;
@@ -67,14 +69,17 @@ var intervalID;
 
 // Create the getRandomQuuote function and name it getRandomQuote
 function getRandomQuote () {
+  //since its from 0-array.length, we dont have to add 1
   randomQuoteindx = Math.floor((Math.random() * quotes.length));
   randomColorindx = Math.floor(Math.random() * colorPlate.length);
 
+  //This clears the html string so that each time the function runs it outputs just one quote, and doesnt append it to the existing string.
   HTMLString = '';
 
+  //one 'for' loop to make one whole html string output - it will include all the html and object properties.
   for (i=randomQuoteindx;i>=0;i+=0) {
 
-    //console.log(quotes[randomQuoteindx].citation);
+    //console.log(quotes[randomQuoteindx].citation); - this is how we access each 'quote' object, in the array of quote objects
 
     HTMLString += '<p class="quote">' + quotes[i].quote + '</p>';
     HTMLString += '<p class="source">' + quotes[i].source;
@@ -97,13 +102,13 @@ function getRandomQuote () {
 }
 
 function setTimer () {
-
+    //the set interval function returns and ID value that is used by the clearInterval function. Pass the IntervalID to clearInterrval function.
     intervalID = setInterval(function timeToDo(){ printQuote(); }, 500);
 
 }
 
 function stopTimer () {
-
+  //set this to be an onclick event - no matter how many times you start the interval, always have a way to stop it. **Tried using one button, but could figure it out.
   clearInterval(intervalID);
 
 }
@@ -113,22 +118,20 @@ function printQuote () {
 
     getRandomQuote();
 
-    //need to generate random number from 0 to index length and use to get random BG and FG colors.
+    //always asign document.getElementById/getElementsByClassName('className') to a variable. Since it stores as an object, use 'dot' notation to acces various properties. Also, look at CSS to make sure that there are no specific properties that are overriding the JS.
     var quotebox = document.getElementById('quote-box');
     quotebox.innerHTML = HTMLString;
     quotebox.style.color = colorPlate[randomColorindx].foreground;
 
+    //set variable.style.backgroundColor to HEX color.
     var x = document.getElementsByTagName("BODY")[0];
     x.style.backgroundColor = colorPlate[randomColorindx].background;
 
+    //since there are more than one array element - we need to access each one and and change the color property of each. Otherwise only one tag changes color.
     var y= document.getElementsByTagName("a");
-
-    for (var i = 0; i < y.length; i++) {
-      y[i].style.color = colorPlate[randomColorindx].foreground;
-    }
-
-    var hashcolor = document.getElementsByClassName("hashtag");
-    for (c=0;c<hashcolor.length;c++) { hashcolor[c].style.color = colorPlate[randomColorindx].foreground }
+      for (var i = 0; i < y.length; i++) {
+        y[i].style.color = colorPlate[randomColorindx].foreground;
+      }
 
 }
 

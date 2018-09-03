@@ -1,8 +1,10 @@
 /* Random Quote Generator Styles */
+/* Example */
 
 body {
   background-color: #36b55c;
   color: white;
+  /* Changed all the text to Josefin Sans - linked the google font in the html */
   font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -16,8 +18,10 @@ body {
 }
 
 .quote {
+  /* Change the font size to a little smaller on the desktop  */
   font-size: 4rem;
   font-weight: 400;
+  /* Add a little line height to keep the spacing good */
   line-height: 1.1;
   position: relative;
   margin: 0;
@@ -67,24 +71,27 @@ body {
   content: ", ";
   font-style: normal;
 }
-
+/* Target P tags with the class = 'tags' | add some line height to space from the citation */
 p.tags {
-  line-height: 1.5rem;
+  line-height: 2.5rem;
 }
 
 .hashtag{
     margin-right: .75rem;
 }
+
+/* Set teh start color to white, remove text decoration adjust font size */
 .hashtag, a{
     margin-bottom: .5rem;
     color: white;
     text-decoration: none;
     font-size: 1.15rem;
 }
+
+/* Set the hover effects = bold text, underline */
 .hashtag:hover {
   font-weight: bold;
   text-decoration: underline;
-  color: white;
 }
 
 #buttonContainer {
@@ -97,11 +104,9 @@ p.tags {
   line-height: .75;
 }
 
+/* Background color is transparent and on hover turn slight white */
 #loadQuote {
-  /*position: fixed;*/
-  /*width: 12em;*/
   display: inline-block;
-  /*left: 50%;*/
   margin-left: -6em;
   margin-right: 1em;
   border-radius: 4px;
@@ -115,16 +120,13 @@ p.tags {
   background-color: rgba(255,255,255,.25);
 }
 
+/* Remove the outline - gross :'/ */
 #loadQuote:focus {
   outline: none;
 }
 
 #setTimer {
-  /*position: fixed;*/
-  /*width: 12em;*/
   display: inline-block;
-  /*left: 50%;*/
-  /*margin-left: -6em;*/
   border-radius: 4px;
   border: 2px solid #fff;
   color: #fff;
@@ -141,6 +143,7 @@ p.tags {
   outline: none;
 }
 
+/* Stop timer button - has basically all the same properties as the start timer button */
 #stopTimer {
   display: inline-block;
   border-radius: 4px;
@@ -159,6 +162,7 @@ p.tags {
   outline: none;
 }
 
+/* MEdia Query - super immportant for mobile use - when mobile screen less than 1200px wide is detected the font goes down to 3rem(vs 4) | Could add a phone version where the font goes down to 2 rem maybe? */
 @media only screen and (max-width: 1200px) {
   .quote {
     font-size: 3rem;
