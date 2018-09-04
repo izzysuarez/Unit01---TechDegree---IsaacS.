@@ -103,6 +103,7 @@ function getRandomQuote () {
 
 function setTimer () {
     //the set interval function returns and ID value that is used by the clearInterval function. Pass the IntervalID to clearInterrval function.
+    printQuote();
     intervalID = setInterval(function timeToDo(){ printQuote(); }, 5500);
     var buttondisable = document.getElementById("setTimer").disabled = true;
 
