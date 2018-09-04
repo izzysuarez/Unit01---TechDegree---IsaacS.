@@ -162,6 +162,10 @@ p.tags {
   outline: none;
 }
 
+button[disabled] {
+    cursor: not-allowed;
+}
+
 /* MEdia Query - super immportant for mobile use - when mobile screen less than 1200px wide is detected the font goes down to 3rem(vs 4) | Could add a phone version where the font goes down to 2 rem maybe? */
 @media only screen and (max-width: 1200px) {
   .quote {

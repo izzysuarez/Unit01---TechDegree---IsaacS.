@@ -103,13 +103,15 @@ function getRandomQuote () {
 
 function setTimer () {
     //the set interval function returns and ID value that is used by the clearInterval function. Pass the IntervalID to clearInterrval function.
-    intervalID = setInterval(function timeToDo(){ printQuote(); }, 5000);
+    intervalID = setInterval(function timeToDo(){ printQuote(); }, 5500);
+    var buttondisable = document.getElementById("setTimer").disabled = true;
 
 }
 
 function stopTimer () {
   //set this to be an onclick event - no matter how many times you start the interval, always have a way to stop it. **Tried using one button, but could figure it out.
   clearInterval(intervalID);
+  var buttondisable = document.getElementById("setTimer").disabled = false;
 
 }
 
