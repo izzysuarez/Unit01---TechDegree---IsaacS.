@@ -77,23 +77,23 @@ function getRandomQuote () {
   HTMLString = '';
 
   //one 'for' loop to make one whole html string output - it will include all the html and object properties.
-  for (i=randomQuoteindx;i>=0;i+=0) {
+  for (indx=randomQuoteindx;indx>=0;indx+=0) {
 
     //console.log(quotes[randomQuoteindx].citation); - this is how we access each 'quote' object, in the array of quote objects
 
-    HTMLString += '<p class="quote">' + quotes[i].quote + '</p>';
-    HTMLString += '<p class="source">' + quotes[i].source;
-    if (quotes[i].citation !== '') {
-      HTMLString += '<span class="citation">' + quotes[i].citation + ' </span>';
+    HTMLString += '<p class="quote">' + quotes[indx].quote + '</p>';
+    HTMLString += '<p class="source">' + quotes[indx].source;
+    if (quotes[indx].citation) {
+      HTMLString += '<span class="citation">' + quotes[indx].citation + ' </span>';
     }
-    if (quotes[i].year !== '') {
-      HTMLString += '<span class="year">' + quotes[i].year + ' </span>';
+    if (quotes[indx].year) {
+      HTMLString += '<span class="year">' + quotes[indx].year + ' </span>';
     }
     HTMLString += '</p><p class=\" tags \" >';
-    if (quotes[i].tags.length >0){
+    if (quotes[indx].tags.length >0){
 
-      for (t=0; t<quotes[i].tags.length; t++)
-      {HTMLString += "<" + "span class='hashtag' ><a href=''>#" + quotes[i].tags[t] + "</a></span>";}
+      for (tagcounter=0; tagcounter<quotes[indx].tags.length; tagcounter++)
+      {HTMLString += "<" + "span class='hashtag' ><a href=''>#" + quotes[indx].tags[tagcounter] + "</a></span>";}
     }
     HTMLString += "</p>";
     break;
@@ -103,7 +103,7 @@ function getRandomQuote () {
 
 function setTimer () {
     //the set interval function returns and ID value that is used by the clearInterval function. Pass the IntervalID to clearInterrval function.
-    intervalID = setInterval(function timeToDo(){ printQuote(); }, 500);
+    intervalID = setInterval(function timeToDo(){ printQuote(); }, 5000);
 
 }
 
